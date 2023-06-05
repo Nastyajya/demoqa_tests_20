@@ -10,6 +10,7 @@ public class TestBase {
         Configuration.browserSize = "1920 x 1080";
         //       Configuration.brower = "chrome";
         //    Configuration.timeout = 3000;
+
         Configuration.holdBrowserOpen = true;
     }
 }
