@@ -1,48 +1,49 @@
 package com.demoqa;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Condition.appear;
+import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
 public class RegistrationTest extends TestBase {
 
     @Test
     void successfulRegistrationTest() {
-        open("https://demoqa.com/automation-practice-form");
+        open("/automation-practice-form");
+        $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
+        executeJavaScript("$('#fixedban').remove()");
+        executeJavaScript("$('footer').remove()");
+
+
         $("#firstName").setValue("Alex");
         $("#lastName").setValue("Egorov");
         $("#userEmail").setValue("EgorovA@gmail.com");
         $("#genterWrapper").$(byText("Female")).click();
-        $("#userNumber").setValue("89321276981");
+        $("#userNumber").setValue("8932127698");
         $("#dateOfBirthInput").click();
         $(".react-datepicker__month-select").selectOption("April");
         $(".react-datepicker__year-select").selectOption("1991");
         $(".react-datepicker__day--001").click();
-        $("#subjectsInput").setValue("h");
-        $(byText("Hindi")).click();
+        $("#subjectsInput").setValue("Hindi").pressEnter();
         $("#hobbiesWrapper").$(byText("Sports")).click();
         $("#uploadPicture").uploadFromClasspath("Test.jpg");
-        $("#CurrentAddress").setValue("New York");
+        $("#currentAddress").setValue("New York");
         $("#state").click();
         $("#stateCity-wrapper").$(byText("NCR")).click();
         $("#city").click();
         $("#stateCity-wrapper").$(byText("Noida")).click();
-        $("submit").click();
+        $("#submit").click();
 
-        $(".modal-body").$(byText("Alex Egorov")).shouldBe(visible);
-        $(".modal-body").$(byText("EgorovA@gmail.com")).shouldBe(visible);
-        $(".modal-body").$(byText("Female")).shouldBe(visible);
-        $(".modal-body").$(byText("89321276981")).shouldBe(visible);
-        $(".modal-body").$(byText("1 April,1991")).shouldBe(visible);
-        $(".modal-body").$(byText("Hindi")).shouldBe(visible);
-        $(".modal-body").$(byText("Sports")).shouldBe(visible);
-        $(".modal-body").$(byText("test.jpg")).shouldBe(visible);
-        $(".modal-body").$(byText("New York")).shouldBe(visible);
-        $(".modal-body").$(byText("NCR Noida")).shouldBe(visible);
+
+        $(".modal-dialog").should(appear);
+        $("#example-modal-sizes-title-lg").should(text("Thanks for submitting the form"));
+        $(".table-responsive").shouldHave(text("Alex"), text("Egorov"),
+                text("EgorovA@gmail.com"), text("Female"), text("8932127698"), text("1 April,1991"),
+                text("Hindi"), text("Sports"), text("Test.jpg"), text("New York"), text("NCR Noida"));
         $("#closeLargeModal").click();
+
     }
 }
 
