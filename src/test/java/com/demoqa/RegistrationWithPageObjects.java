@@ -2,10 +2,11 @@ package com.demoqa;
 
 //import org.junit.Test;
 
+import com.demoqa.pages.RegistrationPage;
 import org.junit.Test;
 
 public class RegistrationWithPageObjects extends TestBase {
-    RegistrationPages registrationPages = new RegistrationPages();
+    RegistrationPage registrationPages = new RegistrationPage();
 
     @Test
     void successRegistrationTest() {

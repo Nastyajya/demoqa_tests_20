@@ -1,4 +1,4 @@
-package com.demoqa;
+package com.demoqa.pages;
 
 import com.codeborne.selenide.SelenideElement;
 import com.demoqa.pages.components.CalendarComponent;
@@ -8,7 +8,7 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
-public class RegistrationPages {
+public class RegistrationPage {
     CalendarComponent calendarComponent = new CalendarComponent();
     VerifyComponent verifyComponent = new VerifyComponent();
     //String LoginInputLocator = "#first_name"; // BAD PRACTICE
@@ -28,7 +28,7 @@ public class RegistrationPages {
             SubmitInput = $("#submit");
 
 
-    public RegistrationPages openPage() {
+    public RegistrationPage openPage() {
         open("/automation-practice-form");
         $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
         executeJavaScript("$('#fixedban').remove()");
@@ -36,78 +36,78 @@ public class RegistrationPages {
         return this;
     }
 
-    public RegistrationPages setFirstName(String value) {
+    public RegistrationPage setFirstName(String value) {
         firstNameInput.setValue(value);
         return this;
     }
 
-    public RegistrationPages setLastName(String value) {
-        firstNameInput.setValue(value);
+    public RegistrationPage setLastName(String value) {
+        lastNameInput.setValue(value);
         return this;
     }
 
-    public RegistrationPages setUserEmaile(String value) {
-        firstNameInput.setValue(value);
+    public RegistrationPage setUserEmaile(String value) {
+        userEmaileInput.setValue(value);
         return this;
     }
 
-    public RegistrationPages setGender(String value) {
+    public RegistrationPage setGender(String value) {
         GenderWrapper.$(byText("value")).click();
         return this;
     }
 
-    public RegistrationPages setUserNumber(String value) {
+    public RegistrationPage setUserNumber(String value) {
         userNumberInput.$(byText("value"));
         return this;
     }
 
-    public RegistrationPages setBirthDay(String day, String month, String year) {
-        $("#dateOfBirthInput").click();
+    public RegistrationPage setBirthDay(String day, String month, String year) {
+        birthDayInput.click();
         calendarComponent.setBirthDay(day, month, year);
         return this;
     }
 
-    public RegistrationPages setSubjects(String value) {
+    public RegistrationPage setSubjects(String value) {
         userSubjectsInput.setValue("value").pressEnter();
         return this;
     }
 
-    public RegistrationPages setHobbies(String value) {
+    public RegistrationPage setHobbies(String value) {
         userHobbiesInput.$(byText(value)).click();
         return this;
     }
 
-    public RegistrationPages setPicture(String value) {
+    public RegistrationPage setPicture(String value) {
         userPictureInput.uploadFromClasspath(value);
         return this;
     }
 
-    public RegistrationPages setAddres(String value) {
+    public RegistrationPage setAddres(String value) {
         userAddresInput.setValue("value");
         return this;
     }
 
-    public RegistrationPages setState(String value) {
+    public RegistrationPage setState(String value) {
         userStateInput.$(byText("value")).click();
         return this;
     }
 
-    public RegistrationPages setCity(String value) {
+    public RegistrationPage setCity(String value) {
         userCityInput.$(byText("value")).click();
         return this;
     }
 
-    public RegistrationPages setSubmit() {
+    public RegistrationPage setSubmit() {
         SubmitInput.click();
         return this;
     }
 
-    public RegistrationPages setResult(String label, String value) {
+    public RegistrationPage setResult(String label, String value) {
         verifyComponent.verifyResult(label, value);
         return this;
     }
 
-    public RegistrationPages closeTableClick() {
+    public RegistrationPage closeTableClick() {
         verifyComponent.closeTable();
         return this;
     }

@@ -1,4 +1,4 @@
-package com.demoqa.pages.components;
+package com.demoqa.pages;
 
 import com.codeborne.selenide.SelenideElement;
 
@@ -6,7 +6,9 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
+
 public class TestBoxTestsPage {
+    TestBoxTestsPage testBoxTestsPage = new TestBoxTestsPage();
     SelenideElement
             userNameInput = $("#userName"),
             userEmailInput = $("#userEmail"),
@@ -22,6 +24,7 @@ public class TestBoxTestsPage {
     public TestBoxTestsPage openPage() {
         open("/text-box");
         return this;
+
     }
 
     public TestBoxTestsPage setName(String name) {

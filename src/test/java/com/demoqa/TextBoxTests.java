@@ -1,12 +1,9 @@
 package com.demoqa;
 
 import com.codeborne.selenide.Configuration;
+import com.demoqa.pages.TestBoxTestsPage;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
 
 public class TextBoxTests {
     @BeforeAll
@@ -18,22 +15,21 @@ public class TextBoxTests {
 //        Configuration.holdBrowserOpen = true;
     }
 
+    TestBoxTestsPage testBoxTestsPage = new TestBoxTestsPage();
+
     @Test
     void successTest() {
-        open("/text-box");
+        testBoxTestsPage.openPage()
+                .setName("Alex Egorov")
+                .setEmail("alex@egorov.com")
+                .currentAddress("Some address 1")
+                .permanentAddress("Another address 1")
+                .onSubmit()
 
-        $("#userName").setValue("Alex Egorov");
-        $("#userEmail").setValue("alex@egorov.com");
-        $("#currentAddress").setValue("Some address 1");
-        $("#permanentAddress").setValue("Another address 1");
-        $("#submit").click();
-
-        $("#output #name").shouldHave(text("Alex Egorov"));
-        $("#output #email").shouldHave(text("alex@egorov.com"));
-        $("#output #currentAddress").shouldHave(text("Some address 1"));
-        $("#output #permanentAddress").shouldHave(text("Another address 1"));
+                .resultName("Alex Egorov")
+                .resultEmail("alex@egorov.com")
+                .resultCurrent("Some address 1")
+                .resultPermanent("Another address 1");
     }
-
-
 }
 
