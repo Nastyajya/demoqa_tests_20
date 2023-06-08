@@ -1,9 +1,8 @@
 package com.demoqa;
 
-//import org.junit.Test;
 
 import com.demoqa.pages.RegistrationPage;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class RegistrationWithPageObjects extends TestBase {
     RegistrationPage registrationPages = new RegistrationPage();
@@ -13,14 +12,14 @@ public class RegistrationWithPageObjects extends TestBase {
         registrationPages.openPage()
                 .setFirstName("Alex")
                 .setLastName("Egorov")
-                .setUserEmaile("EgorovA@gmail.com")
+                .setUserEmail("EgorovA@gmail.com")
                 .setGender("Female")
                 .setUserNumber("89321276981")
-                .setBirthDay("01", "Aplil", "1991")
+                .setBirthDay("01", "April", "1991")
                 .setSubjects("Hindi")
                 .setHobbies("Sports")
                 .setPicture("Test.jpg")
-                .setAddres("New York")
+                .setAddress("New York")
                 .setState("NCR")
                 .setCity("Noida")
                 .setSubmit();
@@ -35,10 +34,7 @@ public class RegistrationWithPageObjects extends TestBase {
                 .setResult("Hobbies", "Sports")
                 .setResult("Picture", "Test.jpg")
                 .setResult("Address", "New York")
-                .setResult("State and City", "NCR Noida")
-                .closeTableClick();
-
-
+                .setResult("State and City", "NCR Noida");
     }
 }
 

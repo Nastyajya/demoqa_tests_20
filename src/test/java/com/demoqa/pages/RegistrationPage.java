@@ -11,20 +11,18 @@ import static com.codeborne.selenide.Selenide.*;
 public class RegistrationPage {
     CalendarComponent calendarComponent = new CalendarComponent();
     VerifyComponent verifyComponent = new VerifyComponent();
-    //String LoginInputLocator = "#first_name"; // BAD PRACTICE
     SelenideElement
-            firstNameInput = $("#firstname"),
+            firstNameInput = $("#firstName"),
             lastNameInput = $("#lastName"),
-            userEmaileInput = $("#userEmail"),
+            userEmailInput = $("#userEmail"),
             GenderWrapper = $("#genterWrapper"),
             userNumberInput = $("#userNumber"),
             birthDayInput = $("#dateOfBirthInput"),
             userSubjectsInput = $("#subjectsInput"),
             userHobbiesInput = $("#hobbiesWrapper"),
             userPictureInput = $("#uploadPicture"),
-            userAddresInput = $("#currentAddress"),
-            userStateInput = $("#stateCity-wrapper"),
-            userCityInput = $("#stateCity-wrapper"),
+            userAddressInput = $("#currentAddress"),
+            userStateAndCityInput = $("#stateCity-wrapper"),
             SubmitInput = $("#submit");
 
 
@@ -46,18 +44,18 @@ public class RegistrationPage {
         return this;
     }
 
-    public RegistrationPage setUserEmaile(String value) {
-        userEmaileInput.setValue(value);
+    public RegistrationPage setUserEmail(String value) {
+        userEmailInput.setValue(value);
         return this;
     }
 
     public RegistrationPage setGender(String value) {
-        GenderWrapper.$(byText("value")).click();
+        GenderWrapper.$(byText(value)).click();
         return this;
     }
 
     public RegistrationPage setUserNumber(String value) {
-        userNumberInput.$(byText("value"));
+        userNumberInput.setValue(value);
         return this;
     }
 
@@ -68,7 +66,7 @@ public class RegistrationPage {
     }
 
     public RegistrationPage setSubjects(String value) {
-        userSubjectsInput.setValue("value").pressEnter();
+        userSubjectsInput.setValue(value).pressEnter();
         return this;
     }
 
@@ -82,18 +80,20 @@ public class RegistrationPage {
         return this;
     }
 
-    public RegistrationPage setAddres(String value) {
-        userAddresInput.setValue("value");
+    public RegistrationPage setAddress(String value) {
+        userAddressInput.setValue(value);
         return this;
     }
 
     public RegistrationPage setState(String value) {
-        userStateInput.$(byText("value")).click();
+        $("#state").click();
+        userStateAndCityInput.$(byText(value)).click();
         return this;
     }
 
     public RegistrationPage setCity(String value) {
-        userCityInput.$(byText("value")).click();
+        $("#city").click();
+        userStateAndCityInput.$(byText(value)).click();
         return this;
     }
 
@@ -107,10 +107,6 @@ public class RegistrationPage {
         return this;
     }
 
-    public RegistrationPage closeTableClick() {
-        verifyComponent.closeTable();
-        return this;
-    }
 }
 
 
