@@ -13,12 +13,7 @@ public class VerifyComponent {
 
     public void verifyResult(String label, String value) {
         tableResponsive.$(byText(label)).sibling(0).shouldHave(text(value));
-
-    }
-
-    public void closeTable() {
         closeTableButton.click();
-
     }
 }
 

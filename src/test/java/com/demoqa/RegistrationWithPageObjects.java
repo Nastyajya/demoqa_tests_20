@@ -22,19 +22,19 @@ public class RegistrationWithPageObjects extends TestBase {
                 .setAddress("New York")
                 .setState("NCR")
                 .setCity("Noida")
-                .setSubmit();
+                .onSubmit();
 
         registrationPages
-                .setResult("Student Name", "Alex Egorov")
-                .setResult("Student Email", "EgorovA@gmail.com")
-                .setResult("Gender", "Female")
-                .setResult("Mobile", "8932127698")
-                .setResult("Date of Birth", "1 April,1991")
-                .setResult("Subjects", "Hindi")
-                .setResult("Hobbies", "Sports")
-                .setResult("Picture", "Test.jpg")
-                .setResult("Address", "New York")
-                .setResult("State and City", "NCR Noida");
+                .verifyResult("Student Name", "Alex Egorov")
+                .verifyResult("Student Email", "EgorovA@gmail.com")
+                .verifyResult("Gender", "Female")
+                .verifyResult("Mobile", "8932127698")
+                .verifyResult("Date of Birth", "1 April,1991")
+                .verifyResult("Subjects", "Hindi")
+                .verifyResult("Hobbies", "Sports")
+                .verifyResult("Picture", "Test.jpg")
+                .verifyResult("Address", "New York")
+                .verifyResult("State and City", "NCR Noida");
     }
 }
 

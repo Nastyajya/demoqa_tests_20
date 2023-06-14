@@ -8,14 +8,13 @@ import static com.codeborne.selenide.Selenide.open;
 
 
 public class TestBoxTestsPage {
-    TestBoxTestsPage testBoxTestsPage = new TestBoxTestsPage();
     SelenideElement
             userNameInput = $("#userName"),
             userEmailInput = $("#userEmail"),
             userAddressInput = $("#currentAddress"),
             addressInput = $("#permanentAddress"),
-            clickInput = $("#submit"),
-            nameResult = $("#output #name"),
+            submitButton = $("#submit"),
+            fullNameResult = $("#output #name"),
             emailResult = $("#output #email"),
             currentResult = $("#output #currentAddress"),
             permanentResult = $("#output #permanentAddress");
@@ -27,7 +26,7 @@ public class TestBoxTestsPage {
 
     }
 
-    public TestBoxTestsPage setName(String name) {
+    public TestBoxTestsPage setFullName(String name) {
         userNameInput.setValue(name);
         return this;
     }
@@ -37,38 +36,37 @@ public class TestBoxTestsPage {
         return this;
     }
 
-    public TestBoxTestsPage currentAddress(String address) {
+    public TestBoxTestsPage setCurrent(String address) {
         userAddressInput.setValue(address);
         return this;
 
     }
 
-    public TestBoxTestsPage permanentAddress(String address) {
+    public TestBoxTestsPage setPermanent(String address) {
         addressInput.setValue(address);
         return this;
     }
 
-    public TestBoxTestsPage onSubmit() {
-        clickInput.click();
+    public void submitButtonClick() {
+        submitButton.click();
+    }
+
+    public TestBoxTestsPage fullNameResult(String name) {
+        fullNameResult.shouldHave(text(name));
         return this;
     }
 
-    public TestBoxTestsPage resultName(String name) {
-        nameResult.shouldHave(text(name));
-        return this;
-    }
-
-    public TestBoxTestsPage resultEmail(String email) {
+    public TestBoxTestsPage emailResult(String email) {
         emailResult.shouldHave(text(email));
         return this;
     }
 
-    public TestBoxTestsPage resultCurrent(String value) {
+    public TestBoxTestsPage currentResult(String value) {
         currentResult.shouldHave(text(value));
         return this;
     }
 
-    public TestBoxTestsPage resultPermanent(String value) {
+    public TestBoxTestsPage permanentResult(String value) {
         permanentResult.shouldHave(text(value));
         return this;
     }

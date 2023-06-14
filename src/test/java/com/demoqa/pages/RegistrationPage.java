@@ -23,7 +23,9 @@ public class RegistrationPage {
             userPictureInput = $("#uploadPicture"),
             userAddressInput = $("#currentAddress"),
             userStateAndCityInput = $("#stateCity-wrapper"),
-            SubmitInput = $("#submit");
+            userStateInput = $("#state"),
+            userCityInput = $("#city"),
+            submitButton = $("#submit");
 
 
     public RegistrationPage openPage() {
@@ -86,23 +88,23 @@ public class RegistrationPage {
     }
 
     public RegistrationPage setState(String value) {
-        $("#state").click();
+        userStateInput.click();
         userStateAndCityInput.$(byText(value)).click();
         return this;
     }
 
     public RegistrationPage setCity(String value) {
-        $("#city").click();
+        userCityInput.click();
         userStateAndCityInput.$(byText(value)).click();
         return this;
     }
 
-    public RegistrationPage setSubmit() {
-        SubmitInput.click();
+    public RegistrationPage onSubmit() {
+        submitButton.click();
         return this;
     }
 
-    public RegistrationPage setResult(String label, String value) {
+    public RegistrationPage verifyResult(String label, String value) {
         verifyComponent.verifyResult(label, value);
         return this;
     }
