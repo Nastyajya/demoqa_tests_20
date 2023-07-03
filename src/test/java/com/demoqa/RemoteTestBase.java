@@ -4,7 +4,6 @@ import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import com.demoqa.helpers.Attach;
 import com.demoqa.pages.TestBoxTestsPage;
-import com.demoqa.utils.RandomUtils;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
@@ -17,15 +16,14 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class RemoteTestBase {
     TestBoxTestsPage testBoxTestsPage = new TestBoxTestsPage();
-    RandomUtils randomUtils = new RandomUtils();
 
     @BeforeAll
     static void beforeAll() {
-        Configuration.baseUrl = "https://demoqa.com";
-        Configuration.browserSize = "1920x1080";
-        Configuration.holdBrowserOpen = true;
-
-        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
+        String browser = System.getProperty("browser", "chrome");
+        String version = System.getProperty("version", "100");
+        String windowSize = System.getProperty("windowSize", "1920x1080");
+        String remote = System.getProperty("remote", "https://user1:1234@selenoid.autotests.cloud/wd/hub");
+        String baseUrl = System.getProperty("baseUrl", "https://demoqa.com");
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(
