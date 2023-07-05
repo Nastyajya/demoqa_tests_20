@@ -39,6 +39,7 @@ public class RemoteTestBase {
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
     }
 
+
     @AfterEach
     void addAttachments() {
 
